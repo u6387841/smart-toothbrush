@@ -297,7 +297,7 @@ httpd_resp_send(req, "<head>"
                         "<h4>Patient Photograph</h4>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p>"
-                        "Wow! You've brushed more than two times! Keep it up!!!"
+                        "Wow! You've brushed more than two times! Keep it up!!!!"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
 }            
@@ -404,15 +404,8 @@ static void initialise_wifi(void *arg)
 }
 
 void is_brushing() {
-    float xval = 1;
-    float yval = 1;
-    float zval = 1;
-    int ac = 0;
-    while (xval != 0 && yval != 0 && zval != 0){
-     xval = x_accel();
-     yval = y_accel();
-     zval = z_accel();
-    ac = average(xval, yval, zval);
+    while (average(x_accel(), y_accel(), z_accel()) != 0){
+    int ac = average(x_accel(), y_accel(), z_accel());
     printf("The average acceleration is : %d \n", ac);
     if (ac > 3000){
     printf("BRUSHING!");
@@ -429,16 +422,8 @@ void is_brushing() {
 }
 void app_main()
 {
-    float xval = 1;
-    float yval = 1;
-    float zval = 1;
-    int ac = 0;
-    while (xval != 0 && yval != 0 && zval != 0){
-     xval = x_accel();
-     yval = y_accel();
-     zval = z_accel();
-    ac = average(xval, yval, zval);    
-    is_brushing();
+    while (average(x_accel(), y_accel(), z_accel()) != 0){
+     is_brushing();
     }
  }
 
