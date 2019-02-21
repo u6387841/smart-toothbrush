@@ -29,6 +29,10 @@ time_t current_time;
 char* c_time_string;
 int number_of_times = 0;
 
+// Analog to Digital Converter code was based off the the following website:
+
+// Developing the webserver code was taken from the esp-idf repository
+
 static const char *TAG="APP";
 // G34 IS x channel 6
 // G35 IS y channel 7
@@ -94,54 +98,9 @@ httpd_resp_set_type(req, "text/html");
 
 if (number_of_times == 0){
 httpd_resp_send(req, "<head>"
-                               "<style type=""text/css"">"
-                            "body {color: purple;"
-                                   "font-family: ""Verdana"", sans-serif}"
-                            "</style>"                        
-                        "</head>"
-                        "<body>"
-                        "<h1>Brushing Habits!</h1>"
-                            "<style type=""text/css"">"
-                            "h1 {margin: 50px 525px 100px;}"
-                            "</style>"                        
-                        "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin: 50px 525px 100px;}"
-                            "</style>"
-                        "<h3>Patient Details</h3>"
-                        "<style type=""text/css"">"
-                            "h3 {margin: 50px 525px 100px;}"
-                            "</style>"
-                        "<p>   Date of Birth:____"
-                                "<br />"
-                                "Address:____"
-                                "<br />" 
-                                "Mobile Number:____"
-                                "<br />"
-                                "Occupation:____"
-                                "<br />"
-                                "Email Address:____"
-                                "<br />"
-                                "Medication:____"
-                                "<br />"
-                                "Allergies:____"
-                        "</p>"
-                            "<style type=""text/css"">"
-                            "p {margin: 50px 525px 100px;}"
-                            "</style>"
-                        "<h4>Patient Photograph</h4>"
-                        "<h5>Patient's Brushing Habits</h5>"
-                        "<p>"
-                        "The person has not brushed today"
-                        "</p>"
-                        "</body>", -1); // -1 = use strlen()
-}
-
-if (number_of_times == 1){
- httpd_resp_send(req, "<head>"
-                            "<style type=""text/css"">"
-                            "body {color: purple;"
-                                   "font-family: ""Verdana"", sans-serif}"
+                        "body {color: purple;"
+                            "font-family: ""Comic Sans MS"", cursive, sans-serif;}"
                             "</style>"                        
                         "</head>"
                         "<body>"
@@ -153,6 +112,11 @@ if (number_of_times == 1){
                         "<style type=""text/css"">"
                             "h2 {margin: 50px 200px 100px;}"
                             "</style>"
+                        "<h4>Patient Photograph</h4>"
+                        "<style type=""text/css"">"
+                            "h4 {margin_right: 500px}"
+                        "</style>"
+                        "<img src=""http://clipart-library.com/images/Bcgrngy7i.png"" alt=""HTML5 Icon"" width=""128"" height=""128"">"
                         "<h3>Patient Details</h3>"
                         "<p1>   Date of Birth:____"
                                 "<br />"
@@ -168,41 +132,79 @@ if (number_of_times == 1){
                                 "<br />"
                                 "Allergies:____"
                         "</p1>"
+                        "<h5>Patient's Brushing Habits</h5>"
+                        "<p2>"
+                        "The patient has not brushed today! It's time for you to brush!"
+                        "</p2>"
+                        "</body>", -1); // -1 = use strlen()
+}
+
+if (number_of_times == 1){
+ httpd_resp_send(req, "<head>"
+                            "<style type=""text/css"">"
+                            "body {color: purple;"
+                                   "font-family: ""Comic Sans MS"", cursive, sans-serif;}"
+                            "</style>"                        
+                        "</head>"
+                        "<body>"
+                        "<h1>Brushing Habits!</h1>"
+                            "<style type=""text/css"">"
+                            "h1 {margin: 50px 200px 100px;}"
+                            "</style>"                        
+                        "<h2>Patient Name:____</h2>"
+                        "<style type=""text/css"">"
+                            "h2 {margin: 50px 200px 100px;}"
+                            "</style>"
                         "<h4>Patient Photograph</h4>"
                         "<style type=""text/css"">"
                             "h4 {margin_right: 500px}"
                         "</style>"
-                        "<style type=""text/css"">"
-                        "<img src=""/images/blank.png"" alt=""HTML5 Icon"" style=""width:128px;height:128px;"">"
-                        "</style>"
+                        "<img src=""http://clipart-library.com/images/Bcgrngy7i.png"" alt=""HTML5 Icon"" width=""128"" height=""128"">"
+                        "<h3>Patient Details</h3>"
+                        "<p1>   Date of Birth:____"
+                                "<br />"
+                                "Address:____"
+                                "<br />" 
+                                "Mobile Number:____"
+                                "<br />"
+                                "Occupation:____"
+                                "<br />"
+                                "Email Address:____"
+                                "<br />"
+                                "Medication:____"
+                                "<br />"
+                                "Allergies:____"
+                        "</p1>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p2>"
-                        "The person has brushed once today"
+                        "The patient has brushed once today"
                         "</p2>"
                         "</body>", -1); // -1 = use strlen()
 }
 
 if (number_of_times == 2) {
  httpd_resp_send(req, "<head>"
-                                "<style type=""text/css"">"
-                            "body {color: purple;"
-                                   "font-family: ""Verdana"", sans-serif}"
+                            "<style type=""text/css"">"
+                        "body {color: purple;"
+                            "font-family: ""Comic Sans MS"", cursive, sans-serif;}"
                             "</style>"                        
                         "</head>"
                         "<body>"
                         "<h1>Brushing Habits!</h1>"
                             "<style type=""text/css"">"
-                            "h1 {margin: 50px 525px 100px;}"
+                            "h1 {margin: 50px 200px 100px;}"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin: 50px 525px 100px;}"
+                            "h2 {margin: 50px 200px 100px;}"
                             "</style>"
-                        "<h3>Patient Details</h3>"
+                        "<h4>Patient Photograph</h4>"
                         "<style type=""text/css"">"
-                            "h3 {margin: 50px 525px 100px;}"
-                            "</style>"
-                        "<p>   Date of Birth:____"
+                            "h4 {margin_right: 500px}"
+                        "</style>"
+                        "<img src=""http://clipart-library.com/images/Bcgrngy7i.png"" alt=""HTML5 Icon"" width=""128"" height=""128"">"
+                        "<h3>Patient Details</h3>"
+                        "<p1>   Date of Birth:____"
                                 "<br />"
                                 "Address:____"
                                 "<br />" 
@@ -215,37 +217,35 @@ if (number_of_times == 2) {
                                 "Medication:____"
                                 "<br />"
                                 "Allergies:____"
-                        "</p>"
-                            "<style type=""text/css"">"
-                            "p {margin: 50px 525px 100px;}"
-                            "</style>"
-                        "<h4>Patient Photograph</h4>"
+                        "</p1>"
                         "<h5>Patient's Brushing Habits</h5>"
-                        "<p>"
-                        "The person has brushed twice today"
-                        "</p>"
+                        "<p2>"
+                        "The patient has brushed twice today! Good job!"
+                        "</p2>"
                         "</body>", -1); // -1 = use strlen()
 } else {
 httpd_resp_send(req, "<head>"
                             "<style type=""text/css"">"
-                            "body {color: purple;"
-                                   "font-family: ""Verdana"", sans-serif}"
+                        "body {color: purple;"
+                            "font-family: ""Comic Sans MS"", cursive, sans-serif;}"
                             "</style>"                        
                         "</head>"
                         "<body>"
                         "<h1>Brushing Habits!</h1>"
                             "<style type=""text/css"">"
-                            "h1 {margin: 50px 525px 100px;}"
+                            "h1 {margin: 50px 200px 100px;}"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin: 50px 525px 100px;}"
+                            "h2 {margin: 50px 200px 100px;}"
                             "</style>"
-                        "<h3>Patient Details</h3>"
+                        "<h4>Patient Photograph</h4>"
                         "<style type=""text/css"">"
-                            "h3 {margin: 50px 60px 100px;}"
-                            "</style>"
-                        "<p>    Date of Birth:____"
+                            "h4 {margin_right: 500px}"
+                        "</style>"
+                        "<img src=""http://clipart-library.com/images/Bcgrngy7i.png"" alt=""HTML5 Icon"" width=""128"" height=""128"">"
+                        "<h3>Patient Details</h3>"
+                        "<p1>   Date of Birth:____"
                                 "<br />"
                                 "Address:____"
                                 "<br />" 
@@ -258,15 +258,11 @@ httpd_resp_send(req, "<head>"
                                 "Medication:____"
                                 "<br />"
                                 "Allergies:____"
-                        "</p>"
-                            "<style type=""text/css"">"
-                            "p {margin: 50px 60px 100px;}"
-                            "</style>"
-                        "<h4>Patient Photograph</h4>"
+                        "</p1>"
                         "<h5>Patient's Brushing Habits</h5>"
-                        "<p>"
-                        "Wow! You've brushed more than twice today! Keep it up!"
-                        "</p>"
+                        "<p2>"
+                        "Wow!The patient has brushed more than twice today! Keep it up!"
+                        "</p2>"
                         "</body>", -1); // -1 = use strlen()
 }            
     return ESP_OK;
@@ -384,13 +380,13 @@ void is_brushing() {
 
 void app_main()
 {
-    while (average(x_accel(), y_accel(), z_accel()) != 0){
+   // while (average(x_accel(), y_accel(), z_accel()) != 0){
     is_brushing();
     static httpd_handle_t server = NULL;
     ESP_ERROR_CHECK(nvs_flash_init());
     initialise_wifi(&server);
-    for (int i = 0; i < 10000 ; i++){
-        continue;
-    }
-    }
+   // for (int i = 0; i < 10000 ; i++){
+   //     continue;
+   // }
+
 }
