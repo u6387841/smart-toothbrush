@@ -177,7 +177,7 @@ if (number_of_times == 1){
                         "</style>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p2>"
-                        "The person has brushed 1 time today"
+                        "The person has brushed once today"
                         "</p2>"
                         "</body>", -1); // -1 = use strlen()
 }
@@ -384,8 +384,13 @@ void is_brushing() {
 
 void app_main()
 {
+    while (average(x_accel(), y_accel(), z_accel()) != 0){
     is_brushing();
     static httpd_handle_t server = NULL;
     ESP_ERROR_CHECK(nvs_flash_init());
     initialise_wifi(&server);
+    for (int i = 0; i < 10000 ; i++){
+        continue;
+    }
+    }
 }

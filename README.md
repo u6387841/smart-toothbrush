@@ -1,24 +1,27 @@
-# HTTP server with SSL support using OpenSSL
+documentation
+does it clearly say what your artefact is and why people should care?
+- smart toothbrush
+- from design doc
+does it include any visual elements? (screenshots, diagrams or videos are great to grab people’s attention)
+- make a demo website
+does it say how to contact you?
+does it have links to other important documentation?
+- CREDIT THE ESP IDF REPO
+is there an opportunity for others to contribute—and an explanation for how they might get involved?
+- future works
+software
+is there a clear description of the software development environment required to build your project (OS, toolchains, etc.), and how to set it up?
+- download esp- idf file then you need to set the path to it
+- need platform io
+- need a driver to set up (depend)
+- main file - use make flash, make monitor, and make menuconfig
+does it have complete instructions on how to build and deploy the software for your IoT artefact?
+- need an accelerometer gy 61, jumper wires, usb cable, and esp 32
+- connect the 
+is there a list of the required parts (e.g. a Bill of Materials) & tools to re-create your artefact?
+are there complete instructions on how to configure/build the hardware required for your artefact?
+- how to ocnfigure use the esp 32 website
 
-This example creates a SSL server that returns a simple HTML page when you visit its root URL.
-
-See the `esp_https_server` component documentation for details.
-
-## Certificates
-
-You will need to approve a security exception in your browser. This is because of a self signed
-certificate; this will be always the case, unless you preload the CA root into your browser/system
-as trusted.
-
-You can generate a new certificate using the OpenSSL command line tool:
-
-```
-openssl req -newkey rsa:2048 -nodes -keyout prvtkey.pem -x509 -days 3650 -out cacert.pem -subj "/CN=ESP32 HTTPS server example"
-```
-
-Expiry time and metadata fields can be adjusted in the invocation.
-
-Please see the openssl man pages (man openssl-req) for more details.
-
-It is **strongly recommended** to not reuse the example certificate in your application;
-it is included only for demonstration.
+licensing
+does your project include a licence?
+is your licence compatible with the rest of the ecosystem?
