@@ -35,7 +35,7 @@
 
 time_t current_time;
 char* c_time_string;
-int number_of_times = 1;
+int number_of_times = 0;
 
 // output a boolean value so if the toothbrush has been picked up - which means one of the three
 // x y or z has gone over 2000 that means brushing has begun
@@ -103,25 +103,8 @@ float average(int a, int b, int c) {
     return average_accel;
 }
 
-int is_brushing() {
-    float xval = 1;
-    float yval = 1;
-    float zval = 1;
-    int ac = 0;
-    while (xval != 0 && yval != 0 && zval != 0){
-     xval = x_accel();
-     yval = y_accel();
-     zval = z_accel();
-    ac = average(xval, yval, zval);
-    }
-
-    if (ac > 3000){
-    number_of_times = number_of_times + 1;
-    return 1;
-    } else {
-    return -1; 
-    }
-}
+// the loop keeps checking the average acceleration and
+// once it gets to 3000 the loop stops and prints out that they have brushed.
 
 // first i need to figure out what the accelerometer values mean
 // then i need to use the value and if its x y or z acceleration reaches higher than a certain amount 
@@ -137,13 +120,12 @@ esp_err_t root_get_handler(httpd_req_t *req)
 
 c_time_string = ctime(&current_time);
 
-    // this is where my code will go
-    httpd_resp_set_type(req, "text/html");
+httpd_resp_set_type(req, "text/html");
 // there will be an if statement here where it will print out yes the patient is brushing
 // if the is brushing function outputs a 1
 
-if (number_of_times == 0)
- httpd_resp_send(req, "<head>"
+if (number_of_times == 0){
+httpd_resp_send(req, "<head>"
                             "<style type=""text/css"">"
                             "body {color: purple;"
                                    "font-family: ""Verdana"", sans-serif}"
@@ -185,8 +167,9 @@ if (number_of_times == 0)
                         "The person has brushed 0 times today"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
+}
 
-if (number_of_times == 1)
+if (number_of_times == 1){
  httpd_resp_send(req, "<head>"
                             "<style type=""text/css"">"
                             "body {color: purple;"
@@ -229,8 +212,9 @@ if (number_of_times == 1)
                         "The person has brushed 1 time today"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
+}
 
-if (number_of_times == 2)
+if (number_of_times == 2) {
  httpd_resp_send(req, "<head>"
                             "<style type=""text/css"">"
                             "body {color: purple;"
@@ -273,7 +257,50 @@ if (number_of_times == 2)
                         "The person has brushed 2 times today"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
-            
+} else {
+httpd_resp_send(req, "<head>"
+                            "<style type=""text/css"">"
+                            "body {color: purple;"
+                                   "font-family: ""Verdana"", sans-serif}"
+                            "</style>"                        
+                        "</head>"
+                        "<body>"
+                        "<h1>Brushing Habits!</h1>"
+                            "<style type=""text/css"">"
+                            "h1 {margin: 50px 525px 100px;}"
+                            "</style>"                        
+                        "<h2>Patient Name:____</h2>"
+                        "<style type=""text/css"">"
+                            "h2 {margin-right: 150px;}"
+                            "</style>"
+                        "<h3>Patient Details</h3>"
+                        "<style type=""text/css"">"
+                            "h3 {margin-right: 150px;}"
+                            "</style>"
+                        "<p>   Date of Birth:____"
+                                "<br />"
+                                "Address:____"
+                                "<br />" 
+                                "Mobile Number:____"
+                                "<br />"
+                                "Occupation:____"
+                                "<br />"
+                                "Email Address:____"
+                                "<br />"
+                                "Medication:____"
+                                "<br />"
+                                "Allergies:____"
+                        "</p>"
+                            "<style type=""text/css"">"
+                            "p {margin-right: 150px;}"
+                            "</style>"
+                        "<h4>Patient Photograph</h4>"
+                        "<h5>Patient's Brushing Habits</h5>"
+                        "<p>"
+                        "Wow! You've brushed more than two times! Keep it up!!!"
+                        "</p>"
+                        "</body>", -1); // -1 = use strlen()
+}            
     return ESP_OK;
 }
 
@@ -376,11 +403,43 @@ static void initialise_wifi(void *arg)
     ESP_ERROR_CHECK(esp_wifi_start());
 }
 
-void app_main()
-{
+void is_brushing() {
+    float xval = 1;
+    float yval = 1;
+    float zval = 1;
+    int ac = 0;
+    while (xval != 0 && yval != 0 && zval != 0){
+     xval = x_accel();
+     yval = y_accel();
+     zval = z_accel();
+    ac = average(xval, yval, zval);
+    printf("The average acceleration is : %d \n", ac);
+    if (ac > 3000){
+    printf("BRUSHING!");
+    number_of_times = number_of_times + 1;
+    printf(number_of_times);
     static httpd_handle_t server = NULL;
     ESP_ERROR_CHECK(nvs_flash_init());
     initialise_wifi(&server);
+    break;
+    } else {
+    continue;
+    }
+  }   
+}
+void app_main()
+{
+    float xval = 1;
+    float yval = 1;
+    float zval = 1;
+    int ac = 0;
+    while (xval != 0 && yval != 0 && zval != 0){
+     xval = x_accel();
+     yval = y_accel();
+     zval = z_accel();
+    ac = average(xval, yval, zval);    
+    is_brushing();
+    }
  }
 
 // if average accel > 3000

@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.osx": {
+        "PATH": "/Users/namithasarajohn/.platformio/penv/bin:/Users/namithasarajohn/.platformio/penv:~/Library/Haskell/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}

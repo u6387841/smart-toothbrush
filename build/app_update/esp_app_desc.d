@@ -1,7 +1,7 @@
 esp_app_desc.o: \
  /Users/namithasarajohn/esp/esp-idf/components/app_update/esp_app_desc.c \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/platform_include/assert.h \
- /Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/build/include/sdkconfig.h \
+ /Users/namithasarajohn/SummerProj/smart-toothbrush/build/include/sdkconfig.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/stdlib.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/machine/ieeefp.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/_ansi.h \
@@ -36,7 +36,7 @@ esp_app_desc.o: \
 
 /Users/namithasarajohn/esp/esp-idf/components/newlib/platform_include/assert.h:
 
-/Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/build/include/sdkconfig.h:
+/Users/namithasarajohn/SummerProj/smart-toothbrush/build/include/sdkconfig.h:
 
 /Users/namithasarajohn/esp/esp-idf/components/newlib/include/stdlib.h:
 

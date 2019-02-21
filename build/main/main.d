@@ -1,5 +1,4 @@
-main.o: \
- /Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/main/main.c \
+main.o: /Users/namithasarajohn/SummerProj/smart-toothbrush/main/main.c \
  /Users/namithasarajohn/esp/esp-idf/components/driver/include/driver/adc.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/stdint.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/machine/_default_types.h \
@@ -23,7 +22,7 @@ main.o: \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/sys/sched.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/sys/stdio.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/platform_include/assert.h \
- /Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/build/include/sdkconfig.h \
+ /Users/namithasarajohn/SummerProj/smart-toothbrush/build/include/sdkconfig.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/stdlib.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  /Users/namithasarajohn/esp/esp-idf/components/newlib/include/alloca.h \
@@ -192,7 +191,7 @@ main.o: \
 
 /Users/namithasarajohn/esp/esp-idf/components/newlib/platform_include/assert.h:
 
-/Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/build/include/sdkconfig.h:
+/Users/namithasarajohn/SummerProj/smart-toothbrush/build/include/sdkconfig.h:
 
 /Users/namithasarajohn/esp/esp-idf/components/newlib/include/stdlib.h:
 
@@ -435,4 +434,4 @@ main.o: \
 /Users/namithasarajohn/esp/esp-idf/components/newlib/include/sys/string.h:
 
 /Users/namithasarajohn/esp/esp-idf/components/nghttp/port/include/http_parser.h:
-/Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/main/./main.c:
+/Users/namithasarajohn/SummerProj/smart-toothbrush/main/./main.c:
