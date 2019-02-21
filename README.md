@@ -1,15 +1,24 @@
-# Smart Toothbrush
-# GitHub TO DO LIST
-1. ReadMe - what is the artefact
-		  - why should peopl care
-		  - any visual elements
-		  - how to contact 
-		  - links
-		  - future work/contribute
-2. Software - clear description of the software development environment require to build your project + how to set up?
-			- does it have complete instructions on how to build and deploy the software for your IOT artefact?
-			- have you used GIT and git hub
-3. Hardware - is there a list of the required parts and tools to recreate artefact
-		   - complete instructions on how to configure/buld the hardware required for your artefact
-4. Licensing - des your project include a licence?
-			 - is your licence compatible with the rest of the ecosystem?
+# HTTP server with SSL support using OpenSSL
+
+This example creates a SSL server that returns a simple HTML page when you visit its root URL.
+
+See the `esp_https_server` component documentation for details.
+
+## Certificates
+
+You will need to approve a security exception in your browser. This is because of a self signed
+certificate; this will be always the case, unless you preload the CA root into your browser/system
+as trusted.
+
+You can generate a new certificate using the OpenSSL command line tool:
+
+```
+openssl req -newkey rsa:2048 -nodes -keyout prvtkey.pem -x509 -days 3650 -out cacert.pem -subj "/CN=ESP32 HTTPS server example"
+```
+
+Expiry time and metadata fields can be adjusted in the invocation.
+
+Please see the openssl man pages (man openssl-req) for more details.
+
+It is **strongly recommended** to not reuse the example certificate in your application;
+it is included only for demonstration.

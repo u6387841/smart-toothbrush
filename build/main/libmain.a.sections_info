@@ -1,0 +1,106 @@
+In archive /Users/namithasarajohn/Documents/PlatformIO/Projects/SmartToothbrush2/build/main/libmain.a:
+
+main.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.root_get_handler 00000030  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.initialise_wifi 00000094  00000000  00000000  00000064  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.x_accel 00000020  00000000  00000000  000000f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.y_accel 00000020  00000000  00000000  00000118  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.z_accel 00000020  00000000  00000000  00000138  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.is_brushing 00000018  00000000  00000000  00000158  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.start_webserver 0000004c  00000000  00000000  00000170  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.stop_webserver 00000004  00000000  00000000  000001bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.event_handler 0000005c  00000000  00000000  000001c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.app_main 0000001c  00000000  00000000  0000021c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .text         00000000  00000000  00000000  00000238  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 11 .data         00000000  00000000  00000000  00000238  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 12 .bss          00000000  00000000  00000000  00000238  2**0
+                  ALLOC
+ 13 .rodata.str1.4 00000af2  00000000  00000000  00000238  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 14 .text.root_get_handler 0000005e  00000000  00000000  00000d2c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .rodata       000000ac  00000000  00000000  00000d8c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 16 .text.initialise_wifi 0000017e  00000000  00000000  00000e38  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.x_accel 0000004c  00000000  00000000  00000fb8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.y_accel 0000004c  00000000  00000000  00001004  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.z_accel 0000004c  00000000  00000000  00001050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .text.is_brushing 0000003b  00000000  00000000  0000109c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text.start_webserver 000000a0  00000000  00000000  000010d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .text.stop_webserver 0000000e  00000000  00000000  00001178  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .text.event_handler 000000de  00000000  00000000  00001188  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .text.app_main 00000028  00000000  00000000  00001268  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .rodata.__func__$8770 0000000e  00000000  00000000  00001290  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 26 .rodata.__func__$8780 00000010  00000000  00000000  000012a0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 27 .bss.server$8790 00000004  00000000  00000000  000012b0  2**2
+                  ALLOC
+ 28 .rodata.__func__$8792 00000009  00000000  00000000  000012b0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 29 .rodata.root  00000010  00000000  00000000  000012bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 30 .data.number_of_times 00000004  00000000  00000000  000012cc  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 31 .debug_frame  00000100  00000000  00000000  000012d0  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 32 .debug_info   000028ed  00000000  00000000  000013d0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 33 .debug_abbrev 00000410  00000000  00000000  00003cbd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 34 .debug_loc    000002ab  00000000  00000000  000040cd  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 35 .debug_aranges 00000068  00000000  00000000  00004378  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 36 .debug_ranges 00000058  00000000  00000000  000043e0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 37 .debug_line   000008c0  00000000  00000000  00004438  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 38 .debug_str    00001eee  00000000  00000000  00004cf8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 39 .comment      0000003b  00000000  00000000  00006be6  2**0
+                  CONTENTS, READONLY
+ 40 .xtensa.info  00000038  00000000  00000000  00006c21  2**0
+                  CONTENTS, READONLY
+ 41 .xt.lit       00000050  00000000  00000000  00006c59  2**0
+                  CONTENTS, RELOC, READONLY
+ 42 .xt.prop      000002b8  00000000  00000000  00006ca9  2**0
+                  CONTENTS, RELOC, READONLY
+
+cacert.pem.txt.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .rodata.embedded 00000488  00000000  00000000  00000034  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+
+prvtkey.pem.txt.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .rodata.embedded 000006a9  00000000  00000000  00000034  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
