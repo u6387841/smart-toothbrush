@@ -22,14 +22,6 @@
 
 #include <esp_https_server.h>
 
-/* A simple example that demonstrates how to create GET and POST
- * handlers for the web server.
- * The examples use simple WiFi configuration that you can set via
- * 'make menuconfig'.
- * If you'd rather not, just change the below entries to strings
- * with the config you want -
- * ie. #define EXAMPLE_WIFI_SSID "mywifissid"
-*/
 #define EXAMPLE_WIFI_SSID "Namitha's iPhone"
 #define EXAMPLE_WIFI_PASS "rohan123"
 
@@ -37,18 +29,10 @@ time_t current_time;
 char* c_time_string;
 int number_of_times = 0;
 
-// output a boolean value so if the toothbrush has been picked up - which means one of the three
-// x y or z has gone over 2000 that means brushing has begun
-// if true has been output then print out "this patient has brushed _ times today"
-
 static const char *TAG="APP";
 // G34 IS x channel 6
 // G35 IS y channel 7
 // G32 IS z channel 4
-// the sensitivity value or the TYP is 300 so divide every by the TYP value
-// first i need to convert the adc value to a voltage and then divide that by typ to get acceleration
-// I need a voltmeter to test out the different volatages and then convert that- but dont have voltmeter so im
-// using vlues for 3V for now
 
 float x_accel(){
     adc_power_on();
@@ -95,24 +79,10 @@ float z_accel(){
 }
 
 float average(int a, int b, int c) {
-// input the three accelerometer values into this function and then
-// this function outputs a -1 if the person is not brushing
-// and outputs 1 if the person is brushing
     float average_accel = sqrt((a * a) + (b * b) + (c * c));
     printf("The final acceleration is : %f \n", average_accel);
     return average_accel;
 }
-
-// the loop keeps checking the average acceleration and
-// once it gets to 3000 the loop stops and prints out that they have brushed.
-
-// first i need to figure out what the accelerometer values mean
-// then i need to use the value and if its x y or z acceleration reaches higher than a certain amount 
-// that means the person is brushing
-//
-// the code will need to output 3 x y and z values instead of printing them on the screen
-// then keep printing it till there is no output detected
-
 
 /* An HTTP GET handler */
 esp_err_t root_get_handler(httpd_req_t *req)
@@ -121,12 +91,10 @@ esp_err_t root_get_handler(httpd_req_t *req)
 c_time_string = ctime(&current_time);
 
 httpd_resp_set_type(req, "text/html");
-// there will be an if statement here where it will print out yes the patient is brushing
-// if the is brushing function outputs a 1
 
 if (number_of_times == 0){
 httpd_resp_send(req, "<head>"
-                            "<style type=""text/css"">"
+                               "<style type=""text/css"">"
                             "body {color: purple;"
                                    "font-family: ""Verdana"", sans-serif}"
                             "</style>"                        
@@ -138,11 +106,11 @@ httpd_resp_send(req, "<head>"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin-right: 150px;}"
+                            "h2 {margin: 50px 525px 100px;}"
                             "</style>"
                         "<h3>Patient Details</h3>"
                         "<style type=""text/css"">"
-                            "h3 {margin-right: 150px;}"
+                            "h3 {margin: 50px 525px 100px;}"
                             "</style>"
                         "<p>   Date of Birth:____"
                                 "<br />"
@@ -159,12 +127,12 @@ httpd_resp_send(req, "<head>"
                                 "Allergies:____"
                         "</p>"
                             "<style type=""text/css"">"
-                            "p {margin-right: 150px;}"
+                            "p {margin: 50px 525px 100px;}"
                             "</style>"
                         "<h4>Patient Photograph</h4>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p>"
-                        "The person has brushed 0 times today"
+                        "The person has not brushed today"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
 }
@@ -179,17 +147,14 @@ if (number_of_times == 1){
                         "<body>"
                         "<h1>Brushing Habits!</h1>"
                             "<style type=""text/css"">"
-                            "h1 {margin: 50px 525px 100px;}"
+                            "h1 {margin: 50px 200px 100px;}"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin-right: 150px;}"
+                            "h2 {margin: 50px 200px 100px;}"
                             "</style>"
                         "<h3>Patient Details</h3>"
-                        "<style type=""text/css"">"
-                            "h3 {margin-right: 150px;}"
-                            "</style>"
-                        "<p>   Date of Birth:____"
+                        "<p1>   Date of Birth:____"
                                 "<br />"
                                 "Address:____"
                                 "<br />" 
@@ -202,21 +167,24 @@ if (number_of_times == 1){
                                 "Medication:____"
                                 "<br />"
                                 "Allergies:____"
-                        "</p>"
-                            "<style type=""text/css"">"
-                            "p {margin-right: 150px;}"
-                            "</style>"
+                        "</p1>"
                         "<h4>Patient Photograph</h4>"
+                        "<style type=""text/css"">"
+                            "h4 {margin_right: 500px}"
+                        "</style>"
+                        "<style type=""text/css"">"
+                        "<img src=""/images/blank.png"" alt=""HTML5 Icon"" style=""width:128px;height:128px;"">"
+                        "</style>"
                         "<h5>Patient's Brushing Habits</h5>"
-                        "<p>"
+                        "<p2>"
                         "The person has brushed 1 time today"
-                        "</p>"
+                        "</p2>"
                         "</body>", -1); // -1 = use strlen()
 }
 
 if (number_of_times == 2) {
  httpd_resp_send(req, "<head>"
-                            "<style type=""text/css"">"
+                                "<style type=""text/css"">"
                             "body {color: purple;"
                                    "font-family: ""Verdana"", sans-serif}"
                             "</style>"                        
@@ -228,11 +196,11 @@ if (number_of_times == 2) {
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin-right: 150px;}"
+                            "h2 {margin: 50px 525px 100px;}"
                             "</style>"
                         "<h3>Patient Details</h3>"
                         "<style type=""text/css"">"
-                            "h3 {margin-right: 150px;}"
+                            "h3 {margin: 50px 525px 100px;}"
                             "</style>"
                         "<p>   Date of Birth:____"
                                 "<br />"
@@ -249,12 +217,12 @@ if (number_of_times == 2) {
                                 "Allergies:____"
                         "</p>"
                             "<style type=""text/css"">"
-                            "p {margin-right: 150px;}"
+                            "p {margin: 50px 525px 100px;}"
                             "</style>"
                         "<h4>Patient Photograph</h4>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p>"
-                        "The person has brushed 2 times today"
+                        "The person has brushed twice today"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
 } else {
@@ -271,13 +239,13 @@ httpd_resp_send(req, "<head>"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin-right: 150px;}"
+                            "h2 {margin: 50px 525px 100px;}"
                             "</style>"
                         "<h3>Patient Details</h3>"
                         "<style type=""text/css"">"
-                            "h3 {margin-right: 150px;}"
+                            "h3 {margin: 50px 60px 100px;}"
                             "</style>"
-                        "<p>   Date of Birth:____"
+                        "<p>    Date of Birth:____"
                                 "<br />"
                                 "Address:____"
                                 "<br />" 
@@ -292,12 +260,12 @@ httpd_resp_send(req, "<head>"
                                 "Allergies:____"
                         "</p>"
                             "<style type=""text/css"">"
-                            "p {margin-right: 150px;}"
+                            "p {margin: 50px 60px 100px;}"
                             "</style>"
                         "<h4>Patient Photograph</h4>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p>"
-                        "Wow! You've brushed more than two times! Keep it up!!!!"
+                        "Wow! You've brushed more than twice today! Keep it up!"
                         "</p>"
                         "</body>", -1); // -1 = use strlen()
 }            
@@ -405,33 +373,19 @@ static void initialise_wifi(void *arg)
 
 void is_brushing() {
     while (average(x_accel(), y_accel(), z_accel()) != 0){
-    int ac = average(x_accel(), y_accel(), z_accel());
-    printf("The average acceleration is : %d \n", ac);
-    if (ac > 3000){
-    printf("BRUSHING!");
-    number_of_times = number_of_times + 1;
-    printf(number_of_times);
+    float ac = average(x_accel(), y_accel(), z_accel());
+    printf("The average acceleration is : %f \n", ac);
+    if (ac >= 3500){
+    number_of_times++;
+    break;
+  }   
+}
+}
+
+void app_main()
+{
+    is_brushing();
     static httpd_handle_t server = NULL;
     ESP_ERROR_CHECK(nvs_flash_init());
     initialise_wifi(&server);
-    break;
-    } else {
-    continue;
-    }
-  }   
 }
-void app_main()
-{
-    while (average(x_accel(), y_accel(), z_accel()) != 0){
-     is_brushing();
-    }
- }
-
-// if average accel > 3000
-// print patient is brushing
-// else print patient is not brushing
-// first get the function for the value
-// then initilise the wifi
-// then it prints out
-// if the person brushed twice - congrats
-// else put a message
