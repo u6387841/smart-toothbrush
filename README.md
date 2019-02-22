@@ -15,7 +15,9 @@ Platform IO will also be need to run this code and use the ESP 32 on the local m
 All the information on how to get started with the esp 32 with esp-idf can be found on the following website:
 https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#get-esp-idf
 
-In order to run this project, you will need the following commands. make menuconfig allows you to configure any settings and set up the ports on the machine. make flash will build and upload the project and make monitor will the run the project on your machine.
+In order to run this project, you will need the following commands. "make menuconfig" allows you to configure any settings and set up the ports on the machine. "make flash" will build and upload the project and "make monitor" will the run the project on your machine.
+
+To connect to the wifi, change the SSID and Password according to the wifi settings.
 
 ## Hardware
 Required parts/tools:
@@ -30,11 +32,18 @@ Required parts/tools:
 The accelerometer must be attached to the bottom of the toothbrush and then use the jumper wires to connect the x, y, and z outputs to the G34, G35, and G32 respectively on the ESP 32 or to any of the analog to digital converter pins which can be found on the following website:
 https://docs.espressif.com/projects/esp-idf/en/latest/api-reference/peripherals/adc.html
 
-The ESP 32 can then be attached to a board so that its more sturdy or left as it is.
+The ESP 32 can be attached to a board so that its more sturdy or left as it is.
 
 ## How can this artefact be improved
-There are many ways this artefact can be improved. Firstly, the design of the toothbrush can be improved so that there its more user friendly and easy to use. Different sensors can also be attached so that not only the motion is detected but the intensity of brushing, time spent brushing, and more is also detected. These sensors can be used to then give live feedback to the user on how to improve their brushing along with posting the data to the web server. Secondly, the websever can be improved to include a lot more features that can be useful for both patient and dentist.
+There are many ways this artefact can be improved. Firstly, the design of the toothbrush can be improved so that it's more user friendly and easy to use. Different sensors can also be attached so that not only the motion is detected but the intensity of brushing, time spent brushing, and more is also detected. These sensors can be used to then give live feedback to the user on how to improve their brushing along with posting the data to the web server. Secondly, the websever can be improved to include a lot more features that can be useful for both patient and dentist.
 
 ## Contact Details
-Please contact me if you would like to get involved. I can be contacted using the following email address:
+Please contact me if you would like to get involved. I can be contacted on the following email address:
 u6387841@anu.edu.au 
+
+## Credits
+Analog to Digital Converter code was based off the the following website :
+https://docs.espressif.com/projects/esp-idf/en/latest/api-reference/peripherals/adc.html
+
+Developing the webserver code was based off the esp-idf repository example : 
+https://github.com/espressif/esp-idf/tree/master/examples/protocols/https_server

@@ -1,12 +1,11 @@
-/* Simple HTTP + SSL Server Example
-
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
 #include <driver/adc.h>
+// CREDITS
+// Analog to Digital Converter code was based off the the following website :
+// https://docs.espressif.com/projects/esp-idf/en/latest/api-reference/peripherals/adc.html
+
+// Developing the webserver code was based off the follwoing esp-idf repository (HTTPS SERVER Protocol) : 
+// https://github.com/espressif/esp-idf/tree/master/examples/protocols/https_server
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <stdio.h>
@@ -25,13 +24,7 @@
 #define EXAMPLE_WIFI_SSID "Namitha's iPhone"
 #define EXAMPLE_WIFI_PASS "rohan123"
 
-time_t current_time;
-char* c_time_string;
 int number_of_times = 0;
-
-// Analog to Digital Converter code was based off the the following website:
-
-// Developing the webserver code was taken from the esp-idf repository
 
 static const char *TAG="APP";
 // G34 IS x channel 6
@@ -92,8 +85,6 @@ float average(int a, int b, int c) {
 esp_err_t root_get_handler(httpd_req_t *req)
 {
 
-c_time_string = ctime(&current_time);
-
 httpd_resp_set_type(req, "text/html");
 
 if (number_of_times == 0){
@@ -136,7 +127,7 @@ httpd_resp_send(req, "<head>"
                         "<p2>"
                         "The patient has not brushed today! It's time for you to brush!"
                         "</p2>"
-                        "</body>", -1); // -1 = use strlen()
+                        "</body>", -1); 
 }
 
 if (number_of_times == 1){
@@ -179,7 +170,7 @@ if (number_of_times == 1){
                         "<p2>"
                         "The patient has brushed once today"
                         "</p2>"
-                        "</body>", -1); // -1 = use strlen()
+                        "</body>", -1); 
 }
 
 if (number_of_times == 2) {
@@ -222,7 +213,7 @@ if (number_of_times == 2) {
                         "<p2>"
                         "The patient has brushed twice today! Good job!"
                         "</p2>"
-                        "</body>", -1); // -1 = use strlen()
+                        "</body>", -1);
 } else {
 httpd_resp_send(req, "<head>"
                             "<style type=""text/css"">"
@@ -263,7 +254,7 @@ httpd_resp_send(req, "<head>"
                         "<p2>"
                         "Wow!The patient has brushed more than twice today! Keep it up!"
                         "</p2>"
-                        "</body>", -1); // -1 = use strlen()
+                        "</body>", -1);
 }            
     return ESP_OK;
 }
@@ -273,8 +264,6 @@ const httpd_uri_t root = {
     .method    = HTTP_GET,
     .handler   = root_get_handler
 };
-
-
 httpd_handle_t start_webserver(void)
 {
     httpd_handle_t server = NULL;
@@ -371,22 +360,17 @@ void is_brushing() {
     while (average(x_accel(), y_accel(), z_accel()) != 0){
     float ac = average(x_accel(), y_accel(), z_accel());
     printf("The average acceleration is : %f \n", ac);
-    if (ac >= 3500){
+    if (ac >= 4000){
     number_of_times++;
     break;
-  }   
-}
+  }
+  }
 }
 
 void app_main()
 {
-   // while (average(x_accel(), y_accel(), z_accel()) != 0){
     is_brushing();
     static httpd_handle_t server = NULL;
     ESP_ERROR_CHECK(nvs_flash_init());
     initialise_wifi(&server);
-   // for (int i = 0; i < 10000 ; i++){
-   //     continue;
-   // }
-
 }
