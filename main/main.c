@@ -168,7 +168,7 @@ if (number_of_times == 1){
                         "</p1>"
                         "<h5>Patient's Brushing Habits</h5>"
                         "<p2>"
-                        "The patient has brushed once today"
+                        "The patient has only brushed once today! Remember to brush before you go to bed!"
                         "</p2>"
                         "</body>", -1); 
 }
@@ -183,11 +183,11 @@ if (number_of_times == 2) {
                         "<body>"
                         "<h1>Brushing Habits!</h1>"
                             "<style type=""text/css"">"
-                            "h1 {margin: 50px 200px 100px;}"
+                            "h1 {margin: 40px 200px 100px;}"
                             "</style>"                        
                         "<h2>Patient Name:____</h2>"
                         "<style type=""text/css"">"
-                            "h2 {margin: 50px 200px 100px;}"
+                            "h2 {margin: 50px 100px 100px;}"
                             "</style>"
                         "<h4>Patient Photograph</h4>"
                         "<style type=""text/css"">"
@@ -360,7 +360,7 @@ void is_brushing() {
     while (average(x_accel(), y_accel(), z_accel()) != 0){
     float ac = average(x_accel(), y_accel(), z_accel());
     printf("The average acceleration is : %f \n", ac);
-    if (ac >= 4000){
+    if (ac >= 3700){
     number_of_times++;
     break;
   }
