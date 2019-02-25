@@ -34,7 +34,7 @@ https://docs.espressif.com/projects/esp-idf/en/latest/api-reference/peripherals/
 
 The ESP 32 can be attached to a board so that its more sturdy or left as it is.
 
-{% images/toothbrush.jpeg alt="Toothbrush" style="width:100%;" %}
+{% images toothbrush.jpeg alt="Toothbrush" style="width:100%;" %}
 
 ## How can this artefact be improved
 There are many ways this artefact can be improved. Firstly, the design of the toothbrush can be improved so that it's more user friendly and easy to use. Different sensors can also be attached so that not only the motion is detected but the intensity of brushing, time spent brushing, and more is also detected. These sensors can be used to then give live feedback to the user on how to improve their brushing along with posting the data to the web server. Secondly, the websever can be improved to include a lot more features that can be useful for both patient and dentist.
